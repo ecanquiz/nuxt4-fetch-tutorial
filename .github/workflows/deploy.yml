@@ -26,6 +26,7 @@ jobs:
 
       - name: Build VitePress site
         run: npm run docs:build
+        touch docs/.vitepress/dist/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
