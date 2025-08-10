@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "HTTP en Nuxt4",
   description: "nuxt4-fetch-tutorial",
+  base: '/nuxt4-fetch-tutorial/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
