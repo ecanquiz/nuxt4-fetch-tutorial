@@ -18,11 +18,17 @@ hero:
       link: /api-examples
 
 features:
-  - title: Feature A
+  - title: useFetch()
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
+  - title: $fetch()
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
+  - title: useAsyncData()
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit  
+  - title: useNuxtData()
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: useRequestFetch()
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: useState()
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
