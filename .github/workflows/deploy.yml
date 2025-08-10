@@ -2,21 +2,17 @@ name: Deploy VitePress Site to GitHub Pages
 
 on:
   push:
-    branches:
-      - main  # It is activated when merging (develop → main) or pushing directly to main
+    branches: [main]
   pull_request:
-    branches:
-      - main  # It is activated in PRs towards main (from develop)
+    branches: [main]
 
 jobs:
   deploy:
-    # Only deploy if it's a push (not in PRs, to avoid duplicates)
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -26,7 +22,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm install -D vitepress
 
       - name: Build VitePress site
         run: npm run docs:build
@@ -36,4 +32,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
-          publish_branch: gh-pages  # Deployment branch (not main)
+          publish_branch: gh-pages
