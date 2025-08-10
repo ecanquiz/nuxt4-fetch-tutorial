@@ -2,27 +2,29 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "nuxt4-fetch-tuto",
+  title: "HTTP en Nuxt4",
   description: "nuxt4-fetch-tutorial",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Inicio', link: '/' },
+      { text: 'Empezar', link: '/get-started' }
     ],
 
     sidebar: [
       {
         text: 'Examples',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Empezar', link: '/get-started' },
+          { text: 'Establece bases URL', link: '/set-url-bases' },
+          { text: 'useFetch', link: '/use-fetch' },
+          { text: '$fetch', link: '/dolar-fetch' },          
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/ecanquiz/nuxt4-fetch-tutorial' }
     ]
   }
 })
