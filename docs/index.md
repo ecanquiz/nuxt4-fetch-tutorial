@@ -3,13 +3,16 @@
 layout: home
 
 hero:
-  name: "nuxt4-fetch-tuto"
-  text: "nuxt4-fetch-tutorial"
-  tagline: My great project tagline
+  name: "HTTP en Nuxt4"
+  text: "Guía completa de peticiones"
+  tagline: useFetch(), $fetch(), useAsyncData(), useNuxtData(), useRequestFetch() y useState().
+  image:
+    src: /62017400.png
+    alt: VitePress
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Empezar
+      link: /get-started
     - theme: alt
       text: API Examples
       link: /api-examples
