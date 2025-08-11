@@ -65,8 +65,19 @@ const { data: users } = await useFetch('/api/users', {
 
 ```ts
 // It only brings the 'id' and 'title' fields of each post
-const { data } = await useFetch('/api/posts', { pick: ['id', 'title'] });
+const { data } = await useFetch('/api/posts/1', { pick: ['id', 'title'] });
 ```
+
+::: details
+La opción `pick` en los componibles `useFetch` y `useAsyncData` de Nuxt permite minimizar el tamaño de la carga útil seleccionando solo los campos específicos de los datos obtenidos que se desean incluir en la carga útil enviada del servidor al cliente. Esto es especialmente útil para reducir la cantidad de datos transferidos y mejorar el rendimiento.
+
+Sin embargo, al obtener un `array` de objetos, `pick` no funciona como una "selección profunda" (es decir, no selecciona campos de cada objeto del `array`). En estos casos, se debe usar la opción `transform` para mapear el `array` y devolver solo los campos deseados:
+
+Tanto `pick` como `transform` no impiden que se obtengan inicialmente los datos no deseados, pero sí evitan que se añadan a la carga útil transferida del servidor al cliente. Esto ayuda a minimizar el tamaño de la carga útil y a optimizar el rendimiento de la aplicación Nuxt. Para obtener más información, consulte la documentación oficial sobre cómo minimizar el tamaño de la carga útil y las discusiones relacionadas: ["Minimizar el tamaño de la carga útil"](https://nuxt.com/docs/4.x/getting-started/data-fetching#minimize-payload-size) y la respuesta de [Stack Overflow](https://stackoverflow.com/questions/78161528/how-to-use-nuxtjs3-usefetch-pick-parameter-for-arrays-or-make-a-deep-pick).
+:::
+
+
+
 
 ### `immediate` (Controlar ejecución)
 

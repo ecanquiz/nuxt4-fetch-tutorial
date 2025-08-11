@@ -22,11 +22,14 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install -D vitepress
+        run: |
+          npm install
+          npm install -D vitepress
 
       - name: Build VitePress site
-        run: npm run docs:build
-        touch docs/.vitepress/dist/.nojekyll
+        run: |
+          npm run docs:build
+          touch docs/.vitepress/dist/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
