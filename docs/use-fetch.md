@@ -1,6 +1,6 @@
 # Dominando `useFetch`
 
->`useFetch` es el caballo de batalla para fetching de datos en Nuxt 4. Está diseñado para componentes, maneja SSR automáticamente y ofrece reactividad out-of-the-box. Vamos a explorarlo en detalle con ejemplos prácticos usando [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
+>[`useFetch`](https://nuxt.com/docs/4.x/api/composables/use-fetch) es el caballo de batalla para fetching de datos en Nuxt 4. Está diseñado para componentes, maneja SSR automáticamente y ofrece reactividad out-of-the-box. Vamos a explorarlo en detalle con ejemplos prácticos usando [JSONPlaceholder](https://jsonplaceholder.typicode.com/).
 
 ## ¿Qué hace `useFetch`?
 
@@ -245,3 +245,40 @@ const { data: users } = await useFetch('https://jsonplaceholder.typicode.com/use
 - Optimización de caché.
 
 ¿Siguiente paso? [Aprender $fetch](./dolar-fetch.html) para entender el núcleo de las peticiones en Nuxt.
+
+## Cheatsheet: useFetch en Nuxt 4
+
+### Uso Básico
+```ts
+const {
+  data,
+  pending,
+  error,
+  refresh
+} = await useFetch('https://api.example.com/posts');
+```
+
+### Opciones Clave
+
+|Opción|Descripción|Ejemplo|
+|-|-|-|
+|`lazy`|Carga después de montar el componente|`{ lazy: true }`|
+|`transform`|Modifica la respuesta|`transform: (data) => data.results`|
+|`pick`|Filtra campos específicos|`pick: ['id', 'title']`|
+|`immediate`|Controla si se ejecuta inmediatamente|`{ immediate: false }`|
+|`watch`|Recarga cuando cambian valores reactivos|`watch: [page]`|
+
+### Buenas Prácticas
+- ✅ Centraliza URLs con runtimeConfig.
+- ✅ Usa key única para manejo de caché.
+- ✅ Prefiere transform sobre manipulación manual.
+
+--
+
+### **Tips para tu Práctica con `useFetch`**
+1. **Prueba el SSR**: Deshabilita JavaScript en el navegador y verifica que los datos se renderizan en el servidor.
+2. **Simula errores**: Usa URLs incorrectas para probar el manejo de `error`.
+3. **Experimenta con `refresh`**: Crea un botón que fuerce la recarga de datos.
+
+---
+
