@@ -19,7 +19,8 @@ export default defineConfig({
           { text: 'Empezar', link: '/get-started' },
           { text: 'Establece bases URL', link: '/set-url-bases' },
           { text: 'useFetch', link: '/use-fetch' },
-          { text: '$fetch', link: '/dolar-fetch' },          
+          { text: '$fetch', link: '/dolar-fetch' },
+          { text: 'useAsyncData', link: '/use-async-data' }
         ]
       }
     ],
