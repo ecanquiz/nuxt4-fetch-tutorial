@@ -20,7 +20,8 @@ export default defineConfig({
           { text: 'Establece bases URL', link: '/set-url-bases' },
           { text: 'useFetch', link: '/use-fetch' },
           { text: '$fetch', link: '/dolar-fetch' },
-          { text: 'useAsyncData', link: '/use-async-data' }
+          { text: 'useAsyncData', link: '/use-async-data' },
+          { text: 'useNuxtData', link: '/use-nuxt-data' },
         ]
       }
     ],
