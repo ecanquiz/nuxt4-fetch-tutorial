@@ -22,6 +22,7 @@ export default defineConfig({
           { text: '$fetch', link: '/dolar-fetch' },
           { text: 'useAsyncData', link: '/use-async-data' },
           { text: 'useNuxtData', link: '/use-nuxt-data' },
+          { text: 'useRequestFetch', link: '/use-request-fetch' },
         ]
       }
     ],
