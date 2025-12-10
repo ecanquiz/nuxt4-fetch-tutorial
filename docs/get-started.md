@@ -173,11 +173,12 @@ const createPost = async () => {
 
 ## Ruta de Aprendizaje Recomendada
 
-- useFetch → Ideal para componentes (simplicidad y SSR).
-- $fetch → Entender el núcleo de las peticiones.
-- useAsyncData → Control avanzado de datos asíncronos.
-- useNuxtData → Manejo de caché.
-- useRequestFetch → SSR profundo (para mentes avanzadas).
-- useState → Nuxt 4 usa useState (similar a Pinia/Vuex pero más simple).
+- [Bases URL](./set-url-bases.html) → Configuración Global con $fetch.
+- [useFetch](./use-fetch.html) → Ideal para componentes (simplicidad y SSR).
+- [$fetch](./dolar-fetch.html) → Entender el núcleo de las peticiones.
+- [useAsyncData](./use-async-data.html) → Control avanzado de datos asíncronos.
+- [useNuxtData](./use-nuxt-data.html) → Manejo de caché.
+- [useRequestFetch](./use-request-fetch.html) → SSR profundo (para mentes avanzadas).
+- [useState](./use-state.html) → Nuxt 4 usa useState (similar a Pinia/Vuex pero más simple).
 
 
