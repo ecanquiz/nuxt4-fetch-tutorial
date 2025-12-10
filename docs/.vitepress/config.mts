@@ -14,15 +14,16 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Examples',
+        //text: 'Examples',
         items: [
           { text: 'Empezar', link: '/get-started' },
-          { text: 'Establece bases URL', link: '/set-url-bases' },
+          { text: 'Bases URL', link: '/set-url-bases' },
           { text: 'useFetch', link: '/use-fetch' },
           { text: '$fetch', link: '/dolar-fetch' },
           { text: 'useAsyncData', link: '/use-async-data' },
           { text: 'useNuxtData', link: '/use-nuxt-data' },
           { text: 'useRequestFetch', link: '/use-request-fetch' },
+          { text: 'useState', link: '/use-state' }
         ]
       }
     ],
