@@ -33,7 +33,7 @@ const { data, status, error, clear } = useNuxtData(cacheKey);
 ```vue
 <!-- components/PostsList.vue -->
 <script setup>
-// Primera carga - hace la petición HTTP
+// First load - makes the HTTP request
 const { data: posts } = await useAsyncData(
   'featured-posts',
   () => $fetch('https://jsonplaceholder.typicode.com/posts')
@@ -53,7 +53,7 @@ const { data: posts } = await useAsyncData(
 ```vue
 <!-- components/PostStats.vue -->
 <script setup>
-// Reutiliza el caché - SIN nueva petición HTTP
+// Reuse the cache - NO new HTTP request
 const { data: cachedPosts } = useNuxtData('featured-posts');
 </script>
 
@@ -72,7 +72,7 @@ const { data: cachedPosts } = useNuxtData('featured-posts');
 ```vue
 <!-- pages/posts/index.vue -->
 <script setup>
-// Carga inicial de posts
+// Initial post load
 const { data: posts } = await useAsyncData(
   'all-posts',
   () => $fetch('https://jsonplaceholder.typicode.com/posts')
@@ -83,7 +83,7 @@ const { data: posts } = await useAsyncData(
   <div>
     <PostsList />
     <PostStats />
-    <!-- Más componentes que usan los mismos posts -->
+    <!-- More components that use the same posts -->
   </div>
 </template>
 ```
@@ -94,14 +94,14 @@ const { data: posts } = await useAsyncData(
 <script setup>
 const route = useRoute();
 
-// Intenta usar caché primero, si no existe, carga
+// Try using the cache first; if it doesn't exist, load it
 const { data: cachedPosts } = useNuxtData('all-posts');
 
 const { data: posts } = await useAsyncData(
   'all-posts',
   () => $fetch('https://jsonplaceholder.typicode.com/posts'),
   {
-    immediate: !cachedPosts.value // Solo carga si no hay caché
+    immediate: !cachedPosts.value // Only load if there is no cache
   }
 );
 </script>
@@ -119,11 +119,11 @@ const { data: posts, refresh } = await useAsyncData(
 const { clear: clearCache } = useNuxtData('user-posts');
 
 const forceRefresh = async () => {
-  // Opción 1: Limpiar caché y recargar
+  // Option 1: Clear cache and reload
   clearCache();
   await refresh();
   
-  // Opción 2: Solo recargar (automáticamente actualiza caché)
+  // Opción 2: Just reload (automatically updates cache)
   // await refresh();
 };
 </script>
@@ -135,7 +135,7 @@ const forceRefresh = async () => {
 <script setup>
 const { data: posts, status, error } = useNuxtData('featured-posts');
 
-// Estado del caché
+// Cache status
 const cacheStatus = computed(() => {
   switch (status.value) {
     case 'idle': return 'No cargado';
@@ -151,7 +151,7 @@ const cacheStatus = computed(() => {
   <div>
     <p>Estado del caché: {{ cacheStatus }}</p>
     <div v-if="status === 'success'">
-      <!-- Mostrar datos cacheados -->
+      <!-- Show cached data -->
     </div>
   </div>
 </template>
@@ -171,13 +171,13 @@ export const useCachedData = (key: string, fetcher: Function, ttl: number = 3000
     const now = Date.now();
     
     if (!data.value || (now - lastUpdated.value) > ttl) {
-      // Cargar nuevos datos si el caché expiró
+      // Load new data if the cache has expired
       const result = await useAsyncData(key, fetcher);
       lastUpdated.value = now;
       return result;
     }
     
-    // Usar caché existente
+    // Use existing cache
     return { data };
   };
   
@@ -188,21 +188,21 @@ export const useCachedData = (key: string, fetcher: Function, ttl: number = 3000
 ### Event-based Revalidation
 
 ```ts
-// Composable para caché reactivo a eventos
+// Composable for event-reactive caching
 export const useReactiveCache = (key: string, fetcher: Function) => {
   const { data, clear } = useNuxtData(key);
   
-  // Escuchar eventos globales para invalidar caché
+  // Listen for global events to invalidate cache
   const nuxtApp = useNuxtApp();
   
   nuxtApp.hook('app:mounted', () => {
-    // Revalidar cuando la app se monta
+    // Revalidate when the app is mounted
   });
   
-  // Invalidar cuando ocurren ciertas acciones
+  // Invalidate when certain actions occur
   const invalidateOnAction = () => {
     clear();
-    // Opcional: recargar inmediatamente
+    // Optional: recharge immediately
     useAsyncData(key, fetcher);
   };
   
@@ -230,7 +230,7 @@ components/
 export const usePostsCache = () => {
   const postsKey = 'all-posts';
   
-  // Cargar posts (con caché)
+  // Load posts (with cache)
   const loadPosts = async (forceRefresh = false) => {
     const { data: cachedPosts, clear } = useNuxtData(postsKey);
     
@@ -249,13 +249,13 @@ export const usePostsCache = () => {
     return posts;
   };
   
-  // Acceder a posts cacheados
+  // Access cached posts
   const getCachedPosts = () => {
     const { data: posts } = useNuxtData(postsKey);
     return posts;
   };
   
-  // Limpiar caché de posts
+  // Clear post cache
   const clearPostsCache = () => {
     const { clear } = useNuxtData(postsKey);
     clear();
@@ -271,7 +271,7 @@ export const usePostsCache = () => {
 <script setup>
 const { loadPosts, getCachedPosts, clearPostsCache } = usePostsCache();
 
-// Cargar posts al montar (solo si no hay caché)
+// Load posts on mount (only if there is no cache)
 onMounted(async () => {
   await loadPosts();
 });
@@ -279,7 +279,7 @@ onMounted(async () => {
 const posts = getCachedPosts();
 
 const handleRefresh = async () => {
-  await loadPosts(true); // Fuerza recarga
+  await loadPosts(true); // Forces recharging
 };
 </script>
 
@@ -332,19 +332,19 @@ export const useCacheManager = () => {
 ### Uso del Cache Manager
 
 ```ts
-// En cualquier componente
+// In any component
 const cacheManager = useCacheManager();
 
-// Registrar caché
+// Register cache
 cacheManager.registerCache('user-posts');
 cacheManager.registerCache('user-profile');
 
-// Limpiar todo el caché
+// Clear all cache
 const clearAll = () => {
   cacheManager.clearAllCache();
 };
 
-// Limpiar solo caché de usuario
+// Clear user cache
 const clearUserCache = () => {
   cacheManager.clearByPattern(/^user-/);
 };
@@ -354,18 +354,18 @@ const clearUserCache = () => {
 
 ✅ **HACER:**
 ```ts
-// ✅ Keys específicas y descriptivas
+// ✅ Specific and descriptive keys
 useNuxtData('user-123-posts');
 
-// ✅ Reutilizar en múltiples componentes
+// ✅ Reuse across multiple components
 const { data: posts } = useNuxtData('featured-posts');
 
-// ✅ Verificar existencia antes de usar
+// ✅ Check existence before use
 if (cachedData.value) {
   // Usar datos cacheados
 }
 
-// ✅ Limpiar caché cuando ya no se necesita
+// ✅ Clear cache when no longer needed
 onUnmounted(() => {
   clearCache();
 });
@@ -373,21 +373,21 @@ onUnmounted(() => {
 
 ❌ **NO HACER:**
 ```ts
-// ❌ Keys genéricas
+// ❌ Generic keys
 useNuxtData('data');
 
-// ❌ Asumir que siempre hay datos
-console.log(cachedData.value.length); // Puede ser undefined
+// ❌ Assuming there is always data
+console.log(cachedData.value.length); // It can be undefined
 
-// ❌ Modificar directamente el caché
-cachedData.value[0].title = 'Modificado'; // Mejor usar funciones de actualización
+// ❌ Modify the cache directly
+cachedData.value[0].title = 'Modificado'; // It's best to use update features
 ```
 
 ## Métricas y Debugging
 
 ```vue
 <script setup>
-// Debug component para monitorear caché
+// Debug component for monitoring cache
 const cacheKeys = ['featured-posts', 'user-profile', 'dashboard-stats'];
 
 const cacheInfo = computed(() => {

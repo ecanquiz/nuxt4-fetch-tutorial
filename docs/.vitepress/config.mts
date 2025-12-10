@@ -14,7 +14,7 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Examples',
+        //text: 'Examples',
         items: [
           { text: 'Empezar', link: '/get-started' },
           { text: 'Establece bases URL', link: '/set-url-bases' },
