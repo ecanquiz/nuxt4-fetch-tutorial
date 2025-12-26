@@ -7,9 +7,11 @@ export default defineConfig({
   base: '/nuxt4-fetch-tutorial/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: '/me.jpg',
     nav: [
       { text: 'Inicio', link: '/' },
-      { text: 'Empezar', link: '/get-started' }
+      { text: 'Comenzar', link: '/get-started/' },
+      { text: 'ecanquiz', link: 'https://ecanquiz.github.io/' },  
     ],
 
     sidebar: [
