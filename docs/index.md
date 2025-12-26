@@ -5,9 +5,9 @@ layout: home
 hero:
   name: "HTTP en Nuxt4"
   text: "Guía completa de peticiones"
-  tagline: useFetch(), $fetch(), useAsyncData(), useNuxtData(), useRequestFetch() y useState().
+  tagline: useFetch, $fetch, useAsyncData, useNuxtData, useRequestFetch y useState.
   image:
-    src: /62017400.png
+    src: /logo.png
     alt: VitePress
   actions:
     - theme: brand
@@ -19,16 +19,15 @@ hero:
 
 features:
   - title: useFetch()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Es el caballo de batalla para fetching de datos en Nuxt 4. Es un composable que está diseñado para componentes, maneja SSR automáticamente y ofrece reactividad out-of-the-box.
   - title: $fetch()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Es la función base de Nuxt para peticiones HTTP, basada en  ofetch. A diferencia de useFetch, es una función pura de JavaScript sin reactividad integrada.
   - title: useAsyncData()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit  
+    details: Es un composable de Nuxt que proporciona control granular sobre la carga de datos asíncronos. A diferencia de useFetch que es más opiniado, useAsyncData te da más flexibilidad para personalizar cómo se obtienen y gestionan los datos. 
   - title: useNuxtData()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Es un composable que te permite acceder y manipular datos cacheados previamente por useAsyncData o useFetch. Es la clave para optimizar tu aplicación evitando peticiones duplicadas.
   - title: useRequestFetch()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Es un composable de Nitro (server-side) que proporciona una instancia de fetching con el contexto HTTP actual. Es la herramienta para hacer peticiones HTTP dentro de handlers, middleware o rutas API con las credenciales correctas del request.
   - title: useState()
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Es el composable de Nuxt para manejar estado global y persistente entre componentes. Es la alternativa moderna y más simple a Pinia/Vuex, integrada directamente en Nuxt.
 ---
-
