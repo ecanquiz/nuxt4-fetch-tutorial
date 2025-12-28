@@ -2,7 +2,7 @@
 
 ## ¿Qué es `useNuxtData`?
 
-`useNuxtData` es un composable que te permite acceder y manipular datos cacheados previamente por `useAsyncData` o `useFetch`. Es la clave para optimizar tu aplicación evitando peticiones duplicadas.
+[`useNuxtData`](https://nuxt.com/docs/4.x/api/composables/use-nuxt-data) es un composable que te permite acceder y manipular datos cacheados previamente por [`useAsyncData`](https://nuxt.com/docs/4.x/api/composables/use-async-data) o [`useFetch`](https://nuxt.com/docs/4.x/api/composables/use-fetch). Es la clave para optimizar tu aplicación evitando peticiones duplicadas.
 
 ### Características clave:
 

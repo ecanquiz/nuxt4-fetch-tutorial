@@ -2,7 +2,7 @@
 
 ## ¿Qué es useRequestFetch?
 
-`useRequestFetch` es un composable de **Nitro (server-side)** que proporciona una instancia de fetching con el contexto HTTP actual. Es la herramienta para hacer peticiones HTTP **dentro de handlers, middleware o rutas API** con las credenciales correctas del request.
+[`useRequestFetch`](https://nuxt.com/docs/4.x/api/composables/use-request-fetch) es un composable de [**Nitro (server-side)**](https://nitro.build/) que proporciona una instancia de fetching con el contexto HTTP actual. Es la herramienta para hacer peticiones HTTP **dentro de handlers, middleware o rutas API** con las credenciales correctas del request.
 
 ### Características clave:
 
