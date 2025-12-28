@@ -2,7 +2,7 @@
 
 ## ¿Qué es `useState` en Nuxt?
 
-`useState` es el composable de Nuxt para manejar estado global y persistente entre componentes. Es la alternativa moderna y más simple a Pinia/Vuex, integrada directamente en Nuxt.
+[`useState`](https://nuxt.com/docs/4.x/api/composables/use-state) es el composable de Nuxt para manejar estado global y persistente entre componentes. Es la alternativa moderna y más simple a [Pinia](https://pinia.vuejs.org/)/[Vuex](https://vuex.vuejs.org/), integrada directamente en Nuxt.
 
 ### Características clave:
 
